@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+    <style>
+    .pie{
+      font-family: 'Source+Sans+Pro',sans-serif;
+      position:relative;
+      width:5em;
+      height:5em;
+      float:left;
+      margin:20px;
+      border-radius: 5em;
+      background-color: #eee;
+      font-size: 2em;
+      font-weight: 600;
+      color:#f05;
+    }
+    .pie-l, .pie-r{
+      overflow:hidden;
+      width:5em;
+      height:5em;
+      top:0;
+      left:0;
+      position:absolute;
+    }
+    .pie-l:before, .pie-r:before{
+      content:"";
+      position:absolute;
+      width:4em;
+      height:4em;
+      border: .5em solid orange;
+      background-color:#eee;
+      top:0;
+      left:0;
+      border-radius: 4em;
+    }
+    .pie-l, .pie-l:before{
+      clip: rect(auto,2.5em,auto,auto);
+    }
+    .pie-r, .pie-r:before{
+      clip: rect(auto,auto,auto,2.5em);
+    }
+    .label{
+      position:absolute;
+      height:5em;
+      line-height:5em;
+      width:100%;
+      text-align: center;
+    }
+    .to10perc .pie-l,
+    .to20perc .pie-l,
+    .to30perc .pie-l,
+    .to40perc .pie-l,
+    .to50perc .pie-l
+    {display:none;}
+
+    .to10perc .pie-r:before{
+      -webkit-transform: rotate(-144deg);
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-name: animate10;
+    }
+    .to20perc .pie-r:before{
+      -webkit-transform: rotate(-108deg);
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-name: animate20;
+    }
+    .to30perc .pie-r:before{
+      -webkit-transform: rotate(-72deg);
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-name: animate30;
+    }
+    .to40perc .pie-r:before{
+      -webkit-transform: rotate(-36deg);
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-name: animate40;
+    }
+    .to50perc .pie-r:before{
+      -webkit-transform: rotate(0deg);
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-name: animate50;
+    }
+
+    .to60perc .pie-r:before,
+    .to70perc .pie-r:before,
+    .to80perc .pie-r:before,
+    .to90perc .pie-r:before,
+    .to100perc .pie-r:before{
+      -webkit-animation-duration: 2s;
+      -webkit-animation-name: animateRight;
+      -webkit-animation-timing-function: linear;
+    }
+
+    .to60perc .pie-l:before{
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: ease-out;
+      -webkit-transform: rotate(-144deg);
+      -webkit-animation-name: animate60;
+    }
+    .to70perc .pie-l:before{
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: ease-out;
+      -webkit-transform: rotate(-108deg);
+      -webkit-animation-name: animate70;
+    }
+    .to80perc .pie-l:before{
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: ease-out;
+      -webkit-transform: rotate(-72deg);
+      -webkit-animation-name: animate80;
+    }
+    .to90perc .pie-l:before{
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: ease-out;
+      -webkit-transform: rotate(-36deg);
+      -webkit-animation-name: animate90;
+    }
+    .to100perc .pie-l:before{
+      -webkit-animation-duration: 2s;
+      -webkit-animation-timing-function: ease-out;
+      -webkit-transform: rotate(0deg);
+      -webkit-animation-name: animate100;
+    }
+    
+
+     @-webkit-keyframes animateRight {
+        0%   { -webkit-transform: rotate(-180deg); }
+        50%  { -webkit-transform: rotate(0deg);  }
+        100% { -webkit-transform: rotate(0deg);  }
+      }
+      @-webkit-keyframes animate10 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        100% { -webkit-transform: rotate(-144deg);  }
+      }
+      @-webkit-keyframes animate20 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        100% { -webkit-transform: rotate(-108deg);  }
+      }
+      @-webkit-keyframes animate30 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        100% { -webkit-transform: rotate(-72deg);  }
+      }
+       @-webkit-keyframes animate40 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        100% { -webkit-transform: rotate(-36deg);  }
+      }
+       @-webkit-keyframes animate50 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        100% { -webkit-transform: rotate(0deg);  }
+      }
+
+      @-webkit-keyframes animate60 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        50%  { -webkit-transform: rotate(-180deg);  }
+        100% { -webkit-transform: rotate(-144deg);  }
+      }
+      @-webkit-keyframes animate70 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        50%  { -webkit-transform: rotate(-180deg);  }
+        100% { -webkit-transform: rotate(-108deg);  }
+      }
+      @-webkit-keyframes animate80 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        50%  { -webkit-transform: rotate(-180deg);  }
+        100% { -webkit-transform: rotate(-72deg);  }
+      }
+      @-webkit-keyframes animate90 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        50%  { -webkit-transform: rotate(-180deg);  }
+        100% { -webkit-transform: rotate(-36deg);  }
+      }
+      @-webkit-keyframes animate100 {
+        0%   { -webkit-transform: rotate(-180deg); }
+        50%  { -webkit-transform: rotate(-180deg);  }
+        100% { -webkit-transform: rotate(0deg);  } 
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class="pie to10perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">10%</div>
+    </div>
+    <div class="pie to20perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">20%</div>
+    </div>
+    <div class="pie to30perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">30%</div>
+    </div>
+    <div class="pie to40perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">40%</div>
+    </div>
+    <div class="pie to50perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">50%</div>
+    </div>
+    
+    <div class="pie to60perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">60%</div>
+    </div>
+    <div class="pie to70perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">70%</div>
+    </div>
+    <div class="pie to80perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">80%</div>
+    </div>
+    <div class="pie to90perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">90%</div>
+    </div>
+    <div class="pie to100perc">
+      <div class="pie-r"></div>
+      <div class="pie-l"></div>
+      <div class="label">100%</div>
+    </div>
+  </body>
+</html>
